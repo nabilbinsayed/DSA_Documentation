@@ -9,6 +9,7 @@ tags:
 Basically dynamic arrays. Can add members to the end by `push_back()`, or remove by `pop_back()`. Can sort and search and do all sorts of stuffs with them. 
 
 #### Declaration: 
+
 `vector<int> v1;`
 or, 
 `vector<string> cars = {"Volvo", "BMW", "Ford", "Mazda"};`
