@@ -112,9 +112,9 @@ int main()
 ```
 
 > [!Output: ]
-> 	normal set: 1 2 4 41 43 
-> 	unordered_set: 2 41 43 4 1
-> 	multiset: 1 2 4 4 41 41 43
+> 	normal set: 1 2 4 41 43   
+> 	unordered_set: 2 41 43 4 1  
+> 	multiset: 1 2 4 4 41 41 43  
 
 
 ### Maps
