@@ -4,6 +4,27 @@
 @use "./syntax.scss";
 @use "./callouts.scss";
 
+// ─── Google Fonts ───────────────────────────────────────────────────────────
+@import url("https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&family=Outfit:wght@400;500;600;700&display=swap");
+
+// ─── Custom scrollbar ───────────────────────────────────────────────────────
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--lightgray);
+  border-radius: 99px;
+  transition: background $transition-fast;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--gray);
+}
+
+// ─── Root ───────────────────────────────────────────────────────────────────
 html {
   scroll-behavior: smooth;
   text-size-adjust: none;
@@ -19,20 +40,26 @@ body {
   margin: 0;
   box-sizing: border-box;
   background-color: var(--light);
-  font-family: var(--bodyFont);
+  font-family: "Lora", Georgia, serif;
   color: var(--darkgray);
+  font-size: 1.0125rem;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
+// ─── Selection ──────────────────────────────────────────────────────────────
 .text-highlight {
   background-color: var(--textHighlight);
-  padding: 0 0.1rem;
-  border-radius: 5px;
+  padding: 0 0.25rem;
+  border-radius: $radius-sm;
 }
+
 ::selection {
-  background: color-mix(in srgb, var(--tertiary) 60%, rgba(255, 255, 255, 0));
+  background: color-mix(in srgb, var(--tertiary) 28%, rgba(255, 255, 255, 0));
   color: var(--darkgray);
 }
 
+// ─── Base text elements ──────────────────────────────────────────────────────
 p,
 ul,
 text,
@@ -81,10 +108,11 @@ strong {
   font-weight: $semiBoldWeight;
 }
 
+// ─── Links ──────────────────────────────────────────────────────────────────
 a {
   font-weight: $semiBoldWeight;
   text-decoration: none;
-  transition: color 0.2s ease;
+  transition: color $transition-fast;
   color: var(--secondary);
 
   &:hover {
@@ -94,14 +122,19 @@ a {
   &.internal {
     text-decoration: none;
     background-color: var(--highlight);
-    padding: 0 0.1rem;
-    border-radius: 5px;
-    line-height: 1.4rem;
+    padding: 0.05rem 0.3rem;
+    border-radius: $radius-sm;
+    line-height: 1.5rem;
+    transition: background-color $transition-fast, color $transition-fast;
+
+    &:hover {
+      background-color: color-mix(in srgb, var(--secondary) 14%, transparent);
+    }
 
     &.broken {
       color: var(--secondary);
       opacity: 0.5;
-      transition: opacity 0.2s ease;
+      transition: opacity $transition-base;
       &:hover {
         opacity: 0.8;
       }
@@ -129,6 +162,7 @@ a {
   }
 }
 
+// ─── Layout helpers ──────────────────────────────────────────────────────────
 .flex-component {
   display: flex;
 }
@@ -159,9 +193,11 @@ a {
   }
 }
 
+// ─── Page grid ───────────────────────────────────────────────────────────────
 .page {
   max-width: calc(#{map.get($breakpoints, desktop)} + 300px);
   margin: 0 auto;
+
   & article {
     & > h1 {
       font-size: 2rem;
@@ -212,7 +248,7 @@ a {
     }
 
     @media all and not ($desktop) {
-      padding: 0 1rem;
+      padding: 0 1.25rem;
     }
     @media all and ($mobile) {
       margin: 0 auto;
@@ -267,6 +303,7 @@ a {
         }
       }
     }
+
     & .page-header,
     & .page-footer {
       margin-top: 1rem;
@@ -309,23 +346,30 @@ a {
   }
 }
 
+// ─── Footnotes ───────────────────────────────────────────────────────────────
 .footnotes {
-  margin-top: 2rem;
+  margin-top: 2.5rem;
+  padding-top: 1.25rem;
   border-top: 1px solid var(--lightgray);
+  font-size: 0.9rem;
+  color: var(--gray);
 }
 
+// ─── Checkbox ────────────────────────────────────────────────────────────────
 input[type="checkbox"] {
   transform: translateY(2px);
   color: var(--secondary);
-  border: 1px solid var(--lightgray);
-  border-radius: 3px;
+  border: 1.5px solid var(--lightgray);
+  border-radius: 4px;
   background-color: var(--light);
   position: relative;
-  margin-inline-end: 0.2rem;
+  margin-inline-end: 0.3rem;
   margin-inline-start: -1.4rem;
   appearance: none;
   width: 16px;
   height: 16px;
+  cursor: pointer;
+  transition: border-color $transition-fast, background-color $transition-fast;
 
   &:checked {
     border-color: var(--secondary);
@@ -346,13 +390,23 @@ input[type="checkbox"] {
   }
 }
 
+// ─── Blockquote ──────────────────────────────────────────────────────────────
 blockquote {
-  margin: 1rem 0;
+  margin: 1.5rem 0;
   border-left: 3px solid var(--secondary);
-  padding-left: 1rem;
-  transition: border-color 0.2s ease;
+  padding: 0.5rem 0 0.5rem 1.25rem;
+  border-radius: 0 $radius-sm $radius-sm 0;
+  background: color-mix(in srgb, var(--secondary) 5%, transparent);
+  transition: border-color $transition-base;
+
+  p {
+    margin: 0;
+    font-style: italic;
+    color: var(--darkgray);
+  }
 }
 
+// ─── Headings ────────────────────────────────────────────────────────────────
 h1,
 h2,
 h3,
@@ -360,10 +414,11 @@ h4,
 h5,
 h6,
 thead {
-  font-family: var(--headerFont);
+  font-family: "Outfit", system-ui, sans-serif;
   color: var(--dark);
-  font-weight: revert;
+  font-weight: $semiBoldWeight;
   margin-bottom: 0;
+  letter-spacing: -0.015em;
 
   article > & > a[role="anchor"] {
     color: var(--dark);
@@ -380,7 +435,7 @@ h6 {
   &[id] > a[href^="#"] {
     margin: 0 0.5rem;
     opacity: 0;
-    transition: opacity 0.2s ease;
+    transition: opacity $transition-fast;
     transform: translateY(-0.1rem);
     font-family: var(--codeFont);
     user-select: none;
@@ -395,23 +450,35 @@ h6 {
   }
 }
 
-// typography improvements
 h1 {
-  font-size: 1.75rem;
-  margin-top: 2.25rem;
+  font-size: 2rem;
+  font-weight: $boldWeight;
+  margin-top: 2.5rem;
   margin-bottom: 1rem;
+  letter-spacing: -0.025em;
+  line-height: 1.2;
+
+  // Decorative underline accent for article H1
+  article > & {
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid var(--lightgray);
+    margin-bottom: 1.5rem;
+  }
 }
 
 h2 {
-  font-size: 1.4rem;
-  margin-top: 1.9rem;
-  margin-bottom: 1rem;
+  font-size: 1.45rem;
+  font-weight: $semiBoldWeight;
+  margin-top: 2.25rem;
+  margin-bottom: 0.75rem;
+  line-height: 1.3;
 }
 
 h3 {
-  font-size: 1.12rem;
-  margin-top: 1.62rem;
-  margin-bottom: 1rem;
+  font-size: 1.15rem;
+  margin-top: 1.75rem;
+  margin-bottom: 0.6rem;
+  line-height: 1.35;
 }
 
 h4,
@@ -419,76 +486,105 @@ h5,
 h6 {
   font-size: 1rem;
   margin-top: 1.5rem;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
 }
 
+// ─── Code blocks ─────────────────────────────────────────────────────────────
 figure[data-rehype-pretty-code-figure] {
-  margin: 0;
+  margin: 1.5rem 0;
   position: relative;
   line-height: 1.6rem;
-  position: relative;
+  border-radius: $radius-md;
+  overflow: hidden;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.07), 0 1px 4px rgba(0, 0, 0, 0.04);
+  border: 1px solid var(--lightgray);
 
   & > [data-rehype-pretty-code-title] {
-    font-family: var(--codeFont);
-    font-size: 0.9rem;
-    padding: 0.1rem 0.5rem;
-    border: 1px solid var(--lightgray);
-    width: fit-content;
-    border-radius: 5px;
-    margin-bottom: -0.5rem;
-    color: var(--darkgray);
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.78rem;
+    padding: 0.5rem 1rem;
+    background: color-mix(in srgb, var(--darkgray) 6%, var(--light));
+    border-bottom: 1px solid var(--lightgray);
+    color: var(--gray);
+    letter-spacing: 0.02em;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+
+    &::before {
+      content: "";
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: color-mix(in srgb, var(--secondary) 60%, transparent);
+      display: inline-block;
+      flex-shrink: 0;
+    }
   }
 
   & > pre {
     padding: 0;
+    border: none;
+    border-radius: 0;
+    margin: 0;
+    box-shadow: none;
   }
 }
 
 pre {
-  font-family: var(--codeFont);
+  font-family: "JetBrains Mono", "Fira Code", monospace;
   padding: 0 0.5rem;
-  border-radius: 5px;
+  border-radius: $radius-md;
   overflow-x: auto;
   border: 1px solid var(--lightgray);
   position: relative;
+  background: color-mix(in srgb, var(--darkgray) 3%, var(--light));
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
 
   &:has(> code.mermaid) {
     border: none;
+    background: transparent;
+    box-shadow: none;
   }
 
   & > code {
     background: none;
     padding: 0;
-    font-size: 0.85rem;
+    font-size: 0.845rem;
     counter-reset: line;
     counter-increment: line 0;
     display: grid;
-    padding: 0.5rem 0;
+    padding: 0.75rem 0;
     overflow-x: auto;
+    line-height: 1.7;
 
     & [data-highlighted-chars] {
       background-color: var(--highlight);
-      border-radius: 5px;
+      border-radius: 4px;
+      padding: 0.1em 0.2em;
     }
 
     & > [data-line] {
-      padding: 0 0.25rem;
+      padding: 0 1rem 0 0.25rem;
       box-sizing: border-box;
       border-left: 3px solid transparent;
+      transition: background $transition-fast;
 
       &[data-highlighted-line] {
-        background-color: var(--highlight);
+        background-color: color-mix(in srgb, var(--secondary) 10%, transparent);
         border-left: 3px solid var(--secondary);
       }
 
       &::before {
         content: counter(line);
         counter-increment: line;
-        width: 1rem;
-        margin-right: 1rem;
+        width: 1.5rem;
+        margin-right: 1.25rem;
         display: inline-block;
         text-align: right;
-        color: rgba(115, 138, 148, 0.6);
+        color: rgba(115, 138, 148, 0.4);
+        font-size: 0.8em;
+        user-select: none;
       }
     }
 
@@ -503,31 +599,44 @@ pre {
 }
 
 code {
-  font-size: 0.9em;
+  font-size: 0.875em;
   color: var(--dark);
-  font-family: var(--codeFont);
-  border-radius: 5px;
-  padding: 0.1rem 0.2rem;
-  background: var(--lightgray);
+  font-family: "JetBrains Mono", "Fira Code", monospace;
+  border-radius: $radius-sm;
+  padding: 0.15em 0.4em;
+  background: color-mix(in srgb, var(--secondary) 10%, var(--lightgray));
+  border: 1px solid color-mix(in srgb, var(--secondary) 15%, transparent);
+  font-weight: 500;
 }
 
+// ─── Prose ───────────────────────────────────────────────────────────────────
 tbody,
 li,
 p {
-  line-height: 1.6rem;
+  line-height: 1.8rem;
 }
 
+p {
+  margin: 0.85rem 0;
+}
+
+// ─── Tables ──────────────────────────────────────────────────────────────────
 .table-container {
   overflow-x: auto;
+  margin: 1.5rem 0;
+  border-radius: $radius-md;
+  border: 1px solid var(--lightgray);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
 
   & > table {
-    margin: 1rem;
-    padding: 1.5rem;
+    margin: 0;
+    padding: 0;
     border-collapse: collapse;
+    width: 100%;
 
     th,
     td {
-      min-width: 75px;
+      min-width: 80px;
     }
 
     & > * {
@@ -538,47 +647,84 @@ p {
 
 th {
   text-align: left;
-  padding: 0.4rem 0.7rem;
-  border-bottom: 2px solid var(--gray);
+  padding: 0.65rem 1rem;
+  border-bottom: 2px solid var(--lightgray);
+  font-family: "Outfit", system-ui, sans-serif;
+  font-size: 0.825rem;
+  font-weight: $semiBoldWeight;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--gray);
+  background: color-mix(in srgb, var(--darkgray) 4%, var(--light));
 }
 
 td {
-  padding: 0.2rem 0.7rem;
+  padding: 0.55rem 1rem;
+  font-size: 0.95rem;
 }
 
 tr {
   border-bottom: 1px solid var(--lightgray);
+  transition: background $transition-fast;
+
   &:last-child {
     border-bottom: none;
   }
+
+  &:nth-child(even) {
+    background: color-mix(in srgb, var(--darkgray) 2%, transparent);
+  }
+
+  tbody &:hover {
+    background: color-mix(in srgb, var(--secondary) 6%, transparent);
+  }
 }
 
+// ─── Images ──────────────────────────────────────────────────────────────────
 img {
   max-width: 100%;
-  border-radius: 5px;
-  margin: 1rem 0;
+  border-radius: $radius-md;
+  margin: 1.25rem 0;
   content-visibility: auto;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transition: box-shadow $transition-base;
+
+  &:hover {
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+  }
 }
 
 p > img + em {
   display: block;
-  transform: translateY(-1rem);
+  transform: translateY(-0.75rem);
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--gray);
 }
 
+// ─── HR ──────────────────────────────────────────────────────────────────────
 hr {
   width: 100%;
-  margin: 2rem auto;
+  margin: 2.5rem auto;
   height: 1px;
   border: none;
-  background-color: var(--lightgray);
+  background: linear-gradient(
+    to right,
+    transparent,
+    var(--lightgray) 20%,
+    var(--lightgray) 80%,
+    transparent
+  );
 }
 
+// ─── Media ───────────────────────────────────────────────────────────────────
 audio,
 video {
   width: 100%;
-  border-radius: 5px;
+  border-radius: $radius-md;
 }
 
+// ─── Misc ────────────────────────────────────────────────────────────────────
 .spacer {
   flex: 2 1 auto;
 }
@@ -594,8 +740,6 @@ ol.overflow {
   overflow-y: auto;
   width: 100%;
   margin-bottom: 0;
-
-  // clearfix
   content: "";
   clear: both;
 
@@ -626,16 +770,18 @@ iframe.pdf {
   aspect-ratio: 16 / 9;
   height: 100%;
   width: 100%;
-  border-radius: 5px;
+  border-radius: $radius-md;
 }
 
+// ─── Navigation progress ─────────────────────────────────────────────────────
 .navigation-progress {
   position: fixed;
   top: 0;
   left: 0;
   width: 0;
-  height: 3px;
-  background: var(--secondary);
+  height: 2px;
+  background: linear-gradient(90deg, var(--secondary), var(--tertiary));
   transition: width 0.2s ease;
   z-index: 9999;
+  box-shadow: 0 0 8px color-mix(in srgb, var(--secondary) 60%, transparent);
 }

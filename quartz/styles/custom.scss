@@ -1,3 +1,190 @@
 @use "./base.scss";
 
-// put your custom CSS here!
+// ─── Custom enhancements for DSA documentation ──────────────────────────────
+
+// Enhanced sidebar styling
+.sidebar {
+  // Subtle sidebar separator
+  &.left {
+    border-right: 1px solid var(--lightgray);
+
+    @media (max-width: 800px) {
+      border-right: none;
+      border-bottom: 1px solid var(--lightgray);
+      padding-bottom: 1rem !important;
+      margin-bottom: 0.5rem;
+    }
+  }
+}
+
+// Better search styling
+#search-container {
+  input {
+    border-radius: 8px !important;
+    border: 1.5px solid var(--lightgray) !important;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease !important;
+    font-family: "Outfit", system-ui, sans-serif !important;
+
+    &:focus {
+      border-color: var(--secondary) !important;
+      box-shadow: 0 0 0 3px color-mix(in srgb, var(--secondary) 15%, transparent) !important;
+      outline: none !important;
+    }
+  }
+}
+
+// TOC — right sidebar refinements
+.toc {
+  font-size: 0.825rem !important;
+
+  & a {
+    font-weight: 400 !important;
+    opacity: 0.75;
+    transition: opacity 0.15s ease, color 0.15s ease !important;
+    font-family: "Outfit", system-ui, sans-serif;
+
+    &:hover,
+    &.in-view {
+      opacity: 1;
+    }
+  }
+
+  & > .toc-content {
+    & li {
+      line-height: 1.5rem !important;
+    }
+  }
+}
+
+// Footer refinements
+footer {
+  padding: 2rem 0 !important;
+  border-top: 1px solid var(--lightgray) !important;
+  font-size: 0.85rem !important;
+  color: var(--gray) !important;
+  font-family: "Outfit", system-ui, sans-serif;
+  margin-top: 3rem;
+
+  a {
+    font-weight: 500 !important;
+    opacity: 0.8;
+    &:hover { opacity: 1; }
+  }
+}
+
+// Backlinks & graph panel
+.backlinks,
+.graph {
+  border: 1px solid var(--lightgray);
+  border-radius: 10px;
+  padding: 1rem;
+  font-family: "Outfit", system-ui, sans-serif;
+}
+
+// Tag styling
+.tag {
+  font-family: "Outfit", system-ui, sans-serif !important;
+  font-size: 0.78rem !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.02em;
+  padding: 0.2rem 0.55rem !important;
+  border-radius: 99px !important;
+  border: 1.5px solid color-mix(in srgb, var(--secondary) 30%, transparent) !important;
+  background: color-mix(in srgb, var(--secondary) 8%, transparent) !important;
+  color: var(--secondary) !important;
+  transition: background 0.15s ease, border-color 0.15s ease !important;
+
+  &:hover {
+    background: color-mix(in srgb, var(--secondary) 16%, transparent) !important;
+    border-color: color-mix(in srgb, var(--secondary) 50%, transparent) !important;
+  }
+}
+
+// Article-level refinements
+article {
+  // Nicer list bullets
+  ul {
+    padding-left: 1.5rem;
+
+    & > li::marker {
+      color: var(--secondary);
+    }
+  }
+
+  ol {
+    padding-left: 1.5rem;
+
+    & > li::marker {
+      color: var(--secondary);
+      font-weight: 600;
+      font-family: "Outfit", system-ui, sans-serif;
+    }
+  }
+
+  // First paragraph lead style
+  & > p:first-of-type {
+    font-size: 1.05rem;
+    line-height: 1.85rem;
+  }
+}
+
+// Page title refinement
+.article-title {
+  font-family: "Outfit", system-ui, sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+// Breadcrumb styling
+.breadcrumb-container {
+  font-family: "Outfit", system-ui, sans-serif;
+  font-size: 0.85rem;
+  opacity: 0.7;
+  margin-bottom: 0.5rem;
+}
+
+// Graph view node labels
+.graph-label {
+  font-family: "Outfit", system-ui, sans-serif !important;
+  font-size: 0.75rem;
+}
+
+// Mermaid diagrams
+.mermaid svg {
+  border-radius: 10px;
+  padding: 1rem;
+  background: color-mix(in srgb, var(--darkgray) 3%, var(--light));
+  border: 1px solid var(--lightgray);
+}
+
+// Math display blocks
+mjx-container[display="true"] {
+  padding: 1.25rem;
+  background: color-mix(in srgb, var(--darkgray) 3%, var(--light));
+  border-radius: 10px;
+  border: 1px solid var(--lightgray);
+  overflow-x: auto;
+  margin: 1.25rem 0;
+}
+
+// Dark mode tweaks
+[saved-theme="dark"] {
+  // Slightly lighter code background in dark mode
+  pre {
+    background: color-mix(in srgb, var(--darkgray) 30%, var(--light)) !important;
+  }
+
+  // Softer image shadow in dark
+  img {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3) !important;
+  }
+
+  // Table header in dark
+  th {
+    background: color-mix(in srgb, var(--darkgray) 15%, var(--light)) !important;
+  }
+
+  blockquote {
+    background: color-mix(in srgb, var(--secondary) 8%, transparent) !important;
+  }
+}

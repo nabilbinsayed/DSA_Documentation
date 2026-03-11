@@ -1,6 +1,10 @@
+// Shiki dual-theme syntax highlighting
+// Fonts are loaded in base.scss via Google Fonts (JetBrains Mono)
+
 code[data-theme*=" "] {
   color: var(--shiki-light);
   background-color: var(--shiki-light-bg);
+  font-family: "JetBrains Mono", "Fira Code", monospace;
 }
 
 code[data-theme*=" "] span {

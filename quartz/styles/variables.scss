@@ -2,10 +2,6 @@
 
 /**
  * Layout breakpoints
- * $mobile: screen width below this value will use mobile styles
- * $desktop: screen width above this value will use desktop styles
- * Screen width between $mobile and $desktop width will use the tablet layout.
- * assuming mobile < desktop
  */
 $breakpoints: (
   mobile: 800px,
@@ -17,11 +13,18 @@ $tablet: "(min-width: #{map.get($breakpoints, mobile)}) and (max-width: #{map.ge
 $desktop: "(min-width: #{map.get($breakpoints, desktop)})";
 
 $pageWidth: #{map.get($breakpoints, mobile)};
-$sidePanelWidth: 320px; //380px;
-$topSpacing: 6rem;
+$sidePanelWidth: 320px;
+$topSpacing: 5rem;
 $boldWeight: 700;
 $semiBoldWeight: 600;
 $normalWeight: 400;
+
+// Design tokens
+$radius-sm: 6px;
+$radius-md: 10px;
+$radius-lg: 16px;
+$transition-fast: 0.15s ease;
+$transition-base: 0.25s ease;
 
 $mobileGrid: (
   templateRows: "auto auto auto auto auto",
