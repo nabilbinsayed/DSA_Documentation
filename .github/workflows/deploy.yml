@@ -7,7 +7,7 @@ on:
 
 
 env:
-  THEME_NAME: wasp
+  THEME_NAME: hackthebox
  
 permissions:
   contents: read
