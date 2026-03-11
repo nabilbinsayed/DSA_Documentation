@@ -169,22 +169,59 @@ mjx-container[display="true"] {
 
 // Dark mode tweaks
 [saved-theme="dark"] {
-  // Slightly lighter code background in dark mode
-  pre {
-    background: color-mix(in srgb, var(--darkgray) 30%, var(--light)) !important;
+  // Deep navy code block — restores the original bluish feel
+  pre,
+  figure[data-rehype-pretty-code-figure] {
+    background: #0f1629 !important;
+    border-color: #1e2d4a !important;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4) !important;
+  }
+
+  figure[data-rehype-pretty-code-figure] > [data-rehype-pretty-code-title] {
+    background: #0a0f1e !important;
+    border-bottom-color: #1e2d4a !important;
+    color: #6b8cba !important;
+  }
+
+  // Inline code in dark mode
+  code {
+    background: rgba(79, 124, 255, 0.12) !important;
+    border-color: rgba(79, 124, 255, 0.2) !important;
+    color: #a8c4ff !important;
+  }
+
+  // Don't double-apply to pre > code
+  pre code {
+    background: none !important;
+    border: none !important;
+    color: inherit !important;
   }
 
   // Softer image shadow in dark
   img {
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3) !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35) !important;
   }
 
   // Table header in dark
   th {
-    background: color-mix(in srgb, var(--darkgray) 15%, var(--light)) !important;
+    background: #0a0f1e !important;
+    color: #6b8cba !important;
+  }
+
+  tr:nth-child(even) {
+    background: rgba(15, 22, 41, 0.5) !important;
+  }
+
+  tr:hover td {
+    background: rgba(79, 124, 255, 0.06) !important;
   }
 
   blockquote {
     background: color-mix(in srgb, var(--secondary) 8%, transparent) !important;
+  }
+
+  // Sidebar border in dark
+  .sidebar.left {
+    border-right-color: #1e2d4a !important;
   }
 }
