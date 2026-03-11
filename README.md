@@ -1,10 +1,12 @@
 
+
 This is a compilation of DSA Notes taken for my Level 2 Term 1 Final Exam preparation. Probably with a combination from the DSA course by Striver. Created in [Obsidian](https://obsidian.md/) and hosted with help of [Quartz](https://quartz.jzhao.xyz/). 
 
 Website: [Strivers A2Z DSA Course/Sheet](https://takeuforward.org/dsa/strivers-a2z-sheet-learn-dsa-a-to-z)
 Playlist Link: [Strivers A2Z-DSA Course | DSA Playlist](https://www.youtube.com/playlist?list=PLgUwDviBIf0oF6QL8m22w1hIDC1vJ_BHz)
 Reference Book: Data Structures by Lipschutz, Seymour
-# Syllabus: CSE-241: Data Structures
+
+# CSE-241: Data Structures
 
 **Lectures:** 3 hours/cycle | **Credits:** 3
 
