@@ -15,6 +15,13 @@ Playlist Link: [Strivers A2Z-DSA Course | DSA Playlist](https://www.youtube.com/
 Reference Book: Data Structures by Lipschutz, Seymour
 
 
+# Prelim: 
+
+1. [[C++ Basics]]
+2. Techniques: 
+	1. [[Two Pointer Method]]
+
+
 # CSE-241: Data Structures
 
 **Lectures:** 3 hours/cycle | **Credits:** 3
