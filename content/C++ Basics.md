@@ -141,8 +141,8 @@ int main()
 
 
 > [!Output:]
-> 1 Ashik
-> 4 Rafsan
+> 1 Ashik  
+> 4 Rafsan  
 > 26 Atif
 
 
@@ -242,12 +242,12 @@ int main()
 
 
 > [!Output:]
-> 2 4 1 -2 5 7 
-> Target element is at index: 2
-> Minimum element is at index: 3
-> Minimum element is: -2
-> Maximum element is at index: 5
-> Maximum element is: 7
+> 2 4 1 -2 5 7   
+> Target element is at index: 2  
+> Minimum element is at index: 3  
+> Minimum element is: -2  
+> Maximum element is at index: 5  
+> Maximum element is: 7  
 
 
 ### Floor and Ceiling Function
