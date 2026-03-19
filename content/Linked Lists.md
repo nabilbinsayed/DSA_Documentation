@@ -1,4 +1,9 @@
-# Linked Lists
+---
+title: Linked Lists
+draft: false
+tags:
+---
+
 
 > *CSE-241 | Animesh Chandra Roy & Md. Atiqul Islam Rizvi, CUET*
 

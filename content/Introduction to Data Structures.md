@@ -1,3 +1,8 @@
+---
+title: Introduction to Data Structures
+draft: false
+tags:
+---
 
 **Data management** is the discipline of organizing, storing, and manipulating data in a way that makes it accessible and usable by programs. Before studying specific data structures, it helps to understand _why_ we organize data at all — and what properties of data drive the choice of how to organize it.
 

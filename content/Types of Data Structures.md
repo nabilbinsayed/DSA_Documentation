@@ -1,4 +1,9 @@
-# Types of Data Structures — Linear and Nonlinear
+---
+title: Types of Data Structures
+draft: false
+tags:
+---
+
 
 > *CSE-241 | Animesh Chandra Roy & Md. Atiqul Islam Rizvi, CUET*
 

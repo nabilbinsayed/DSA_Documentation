@@ -1,4 +1,9 @@
-# Data Types — Primitive and Non-Primitive
+---
+title: Data Types
+draft: false
+tags:
+---
+
 
 > *CSE-241 | Animesh Chandra Roy & Md. Atiqul Islam Rizvi, CUET*
 

@@ -1,4 +1,9 @@
-# Operations on Data Structures
+---
+title: Operations on Data Structures
+draft: false
+tags:
+---
+
 
 > *CSE-241 | Animesh Chandra Roy & Md. Atiqul Islam Rizvi, CUET*
 
