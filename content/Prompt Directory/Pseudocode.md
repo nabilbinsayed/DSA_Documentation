@@ -1,0 +1,11 @@
+Write pseudocode for [OPERATION, e.g. "inserting a node at the end of a linked list"] in Seymour Lipschutz's Data Structures (Schaum's Outlines) style. Follow these rules exactly:
+- Signature: Algorithm: ALGNAME(PARAMS) on its own line
+- Italicized one-sentence description of what it does and what each param means
+- Numbered steps: Step 1:, Step 2:, etc.
+- Each step has an ALL-CAPS bracketed comment, e.g. [Check for overflow.]
+- Sub-actions indented on separate lines
+- If/Else/End of If, Repeat, While each on their own lines, body indented
+- Use := for assignment, NULL for null pointer, AVAIL for free storage
+- Conditionals end with [End of If structure.], loops with [End of loop.]
+- Prefix assignments with Set — e.g. Set X := Y
+- Final step is always: Exit.
