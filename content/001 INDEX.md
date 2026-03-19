@@ -26,15 +26,15 @@ Reference Book: Data Structures by Lipschutz, Seymour
 
 **Lectures:** 3 hours/cycle | **Credits:** 3
 
-## 1. Introduction to Data Structures
+## 1. [[Introduction to Data Structures]]
 
 - **Data Management Concepts**
     
-- **Data Types:** Primitive and non-primitive
+- **[[Data Types]]:** Primitive and non-primitive
     
-- **Types of Data Structures:** Linear and nonlinear
+- [[Types of Data Structures]]: Linear and nonlinear
     
-- **Operations on Data Structures**
+- **[[Operations on Data Structures]]**
     
 -  [[Performance Analysis and Measurement]]: 
     
@@ -45,7 +45,7 @@ Reference Book: Data Structures by Lipschutz, Seymour
     - Asymptotic notations ($O$, $\Omega$, $\Theta$)
 ## 2. Linear Data Structures
 
-### Arrays
+### [[Arrays]]
 
 - Representations of different types of arrays
     
@@ -56,7 +56,7 @@ Reference Book: Data Structures by Lipschutz, Seymour
 - Types and operations on matrices
     
 
-### Linked Lists
+### [[Linked Lists]]
 
 - Types of linked lists
     
