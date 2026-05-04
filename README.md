@@ -1,12 +1,19 @@
 
+The DSA course in CUET is divided into two parts, Data Structure course in Level 2 Term 1, and Algorithm Design Analysis course in Level 2 Term 2. Notes and references of both terms are compiled here. 
 
-This is a compilation of DSA Notes taken for my Level 2 Term 1 Final Exam preparation. Probably with a combination from the DSA course by Striver. Created in [Obsidian](https://obsidian.md/) and hosted with help of [Quartz](https://quartz.jzhao.xyz/). 
+Link to the Github Site: https://nabilbinsayed.github.io/DSA_Documentation
+
+
+ Created in [Obsidian](https://obsidian.md/) and hosted with help of [Quartz](https://quartz.jzhao.xyz/). 
 
 Website: [Strivers A2Z DSA Course/Sheet](https://takeuforward.org/dsa/strivers-a2z-sheet-learn-dsa-a-to-z)
 
 Playlist Link: [Strivers A2Z-DSA Course | DSA Playlist](https://www.youtube.com/playlist?list=PLgUwDviBIf0oF6QL8m22w1hIDC1vJ_BHz)
 
-Reference Book: Data Structures by Lipschutz, Seymour
+Reference Books:
+
+1. Data Structures by Lipschutz, Seymour (L2T1) (Kinda Trash)
+2. Introduction to Algorithms (CLRS) (L2T2) (Great)
 
 
 # CSE-241: Data Structures
