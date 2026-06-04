@@ -486,20 +486,20 @@ code {
   font-family: var(--codeFont) !important;
   font-size: 0.85em !important;
   padding: 0.2rem 0.4rem !important;
-  background: color-mix(in srgb, var(--secondary) 8%, var(--lightgray)) !important;
-  border: 1px solid color-mix(in srgb, var(--secondary) 15%, transparent) !important;
+  background: #f1f5f9 !important; // neutral Slate 100
+  border: 1px solid #e2e8f0 !important; // neutral Slate 200
   border-radius: 6px !important;
-  color: var(--secondary) !important;
+  color: #334155 !important; // Slate 700
   font-weight: 500 !important;
 }
 
 figure[data-rehype-pretty-code-figure] {
   position: relative !important;
   border-radius: 12px !important;
-  border: 1px solid var(--lightgray) !important;
+  border: 1px solid #e2e8f0 !important;
   overflow: hidden !important;
-  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.04), 0 1px 3px rgba(15, 23, 42, 0.02) !important;
-  background: var(--lightgray) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03) !important;
+  background: #f8fafc !important; // neutral Slate 50
   margin: 1.75rem 0 !important;
   
   pre {
@@ -510,12 +510,12 @@ figure[data-rehype-pretty-code-figure] {
     display: flex !important;
     align-items: center !important;
     padding: 0.65rem 1rem !important;
-    background: color-mix(in srgb, var(--darkgray) 10%, var(--lightgray)) !important;
-    border-bottom: 1px solid color-mix(in srgb, var(--darkgray) 20%, var(--lightgray)) !important;
+    background: #f1f5f9 !important; // Slate 100
+    border-bottom: 1px solid #e2e8f0 !important;
     font-family: var(--codeFont) !important;
     font-size: 0.8rem !important;
     font-weight: 500 !important;
-    color: var(--dark) !important;
+    color: #475569 !important; // Slate 600
     
     // Custom window dots on code blocks for premium feel
     &::before {
@@ -554,15 +554,18 @@ figure[data-rehype-pretty-code-figure] {
   & > svg {
     width: 13px !important;
     height: 13px !important;
-    fill: #cbd5e1 !important;
+    fill: #94a3b8 !important; // Slate 400
     filter: none !important;
     position: static !important;
     margin: 0 !important;
   }
   
   &:hover {
-    background: rgba(96, 165, 250, 0.2) !important;
-    border-color: rgba(96, 165, 250, 0.4) !important;
+    background: #e2e8f0 !important; // Slate 200
+    border-color: #cbd5e1 !important; // Slate 300
+    & > svg {
+      fill: #475569 !important;
+    }
   }
 }
 
@@ -572,7 +575,7 @@ pre:hover .clipboard-button {
 }
 
 pre {
-  background: var(--lightgray) !important;
+  background: #f8fafc !important; // neutral Slate 50
   border: none !important;
   margin: 0 !important;
   padding: 1.25rem 0 !important;
@@ -588,11 +591,11 @@ pre {
     padding: 0 !important;
     font-size: 0.85rem !important;
     line-height: 1.7 !important;
-    color: var(--dark) !important;
     display: block !important; // block layout for natural wrapping
     white-space: pre-wrap !important;
     word-break: break-word !important;
     overflow-wrap: break-word !important;
+    color: inherit; // Restores actual syntax highlighting colors
     
     & > [data-line] {
       padding: 0 1.25rem 0 3.75rem !important; // Indent line text to clear absolute numbers
@@ -603,8 +606,8 @@ pre {
       white-space: pre-wrap !important;
       
       &[data-highlighted-line] {
-        background: color-mix(in srgb, var(--secondary) 12%, var(--lightgray)) !important;
-        border-left: 3px solid var(--secondary) !important;
+        background: #f1f5f9 !important; // Slate 100
+        border-left: 3px solid #3b82f6 !important; // Blue 500 for highlight
       }
       
       &::before {
@@ -613,7 +616,7 @@ pre {
         width: 2.75rem !important;
         padding-right: 0.75rem !important;
         text-align: right !important;
-        color: var(--gray) !important;
+        color: #94a3b8 !important; // Slate 400
         font-size: 0.8em !important;
         user-select: none !important;
         
@@ -623,8 +626,8 @@ pre {
         top: 0 !important;
         bottom: 0 !important;
         z-index: 2 !important;
-        background: var(--lightgray) !important;
-        border-right: 1px solid color-mix(in srgb, var(--darkgray) 15%, var(--lightgray)) !important;
+        background: #f8fafc !important; // Match pre background
+        border-right: 1px solid #e2e8f0 !important;
         display: flex !important;
         align-items: flex-start !important;
         justify-content: flex-end !important;
@@ -632,7 +635,7 @@ pre {
       }
 
       &[data-highlighted-line]::before {
-        background: color-mix(in srgb, var(--secondary) 12%, var(--lightgray)) !important;
+        background: #f1f5f9 !important; // Slate 100
       }
     }
   }
@@ -900,9 +903,43 @@ pre {
 [saved-theme="dark"] {
   // Inline Code Badge
   code {
-    background: color-mix(in srgb, var(--secondary) 8%, var(--lightgray)) !important;
-    border-color: color-mix(in srgb, var(--secondary) 15%, transparent) !important;
-    color: var(--secondary) !important;
+    background: rgba(148, 163, 184, 0.1) !important;
+    border-color: rgba(148, 163, 184, 0.2) !important;
+    color: #e2e8f0 !important;
+  }
+
+  // Dark Mode Code Block Refinements
+  figure[data-rehype-pretty-code-figure] {
+    background: #0d1117 !important;
+    border-color: #30363d !important;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5) !important;
+
+    & > [data-rehype-pretty-code-title] {
+      background: #161b22 !important;
+      border-bottom-color: #30363d !important;
+      color: #8b949e !important;
+    }
+  }
+
+  pre {
+    background: #0d1117 !important;
+    
+    code > [data-line] {
+      &[data-highlighted-line] {
+        background: #161b22 !important;
+        border-left-color: #3b82f6 !important;
+      }
+      
+      &::before {
+        background: #0d1117 !important;
+        border-right-color: #30363d !important;
+        color: #6e7681 !important;
+      }
+      
+      &[data-highlighted-line]::before {
+        background: #161b22 !important;
+      }
+    }
   }
 
   // Dark Tables
