@@ -579,23 +579,8 @@ pre {
   box-shadow: none !important;
   border-radius: 0 !important;
   position: relative; // Fallback if no figure parent
-  overflow-x: auto !important;
-  
-  // Custom scrollbar
-  &::-webkit-scrollbar {
-    height: 8px !important;
-    width: 8px !important;
-  }
-  &::-webkit-scrollbar-track {
-    background: rgba(0, 0, 0, 0.2) !important;
-  }
-  &::-webkit-scrollbar-thumb {
-    background: rgba(148, 163, 184, 0.3) !important;
-    border-radius: 99px !important;
-    &:hover {
-      background: rgba(148, 163, 184, 0.5) !important;
-    }
-  }
+  white-space: pre-wrap !important;
+  word-wrap: break-word !important;
   
   code {
     background: none !important;
@@ -604,13 +589,17 @@ pre {
     font-size: 0.85rem !important;
     line-height: 1.7 !important;
     color: #cbd5e1 !important;
-    display: grid !important;
+    display: block !important; // block layout for natural wrapping
+    white-space: pre-wrap !important;
+    word-break: break-all !important;
     
     & > [data-line] {
-      padding: 0 1.25rem 0 0 !important; // Left padding moved to line numbers
+      padding: 0 1.25rem 0 3.75rem !important; // Indent line text to clear absolute numbers
       border-left: 3px solid transparent;
-      display: flex !important;
-      align-items: flex-start;
+      display: block !important; // Block layout allows wrapping of tokens
+      position: relative !important;
+      word-wrap: break-word !important;
+      white-space: pre-wrap !important;
       
       &[data-highlighted-line] {
         background: rgba(96, 165, 250, 0.08) !important;
@@ -622,20 +611,23 @@ pre {
         counter-increment: line;
         width: 2.75rem !important;
         padding-right: 0.75rem !important;
-        margin-right: 0.75rem !important;
         text-align: right !important;
         color: rgba(148, 163, 184, 0.3) !important;
         font-size: 0.8em !important;
         user-select: none !important;
-        display: inline-block !important;
-        flex-shrink: 0 !important;
         
-        // Sticky Line Numbers
-        position: sticky !important;
+        // Absolute Positioning for wrapped layout alignment
+        position: absolute !important;
         left: 0 !important;
+        top: 0 !important;
+        bottom: 0 !important;
         z-index: 2 !important;
         background: #0f172a !important;
         border-right: 1px solid rgba(148, 163, 184, 0.15) !important;
+        display: flex !important;
+        align-items: flex-start !important;
+        justify-content: flex-end !important;
+        box-sizing: border-box !important;
       }
 
       &[data-highlighted-line]::before {
