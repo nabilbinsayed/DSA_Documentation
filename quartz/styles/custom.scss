@@ -499,7 +499,7 @@ figure[data-rehype-pretty-code-figure] {
   border: 1px solid var(--lightgray) !important;
   overflow: hidden !important;
   box-shadow: 0 10px 30px rgba(15, 23, 42, 0.04), 0 1px 3px rgba(15, 23, 42, 0.02) !important;
-  background: var(--light) !important;
+  background: var(--lightgray) !important;
   margin: 1.75rem 0 !important;
   
   pre {
@@ -510,12 +510,12 @@ figure[data-rehype-pretty-code-figure] {
     display: flex !important;
     align-items: center !important;
     padding: 0.65rem 1rem !important;
-    background: color-mix(in srgb, var(--lightgray) 20%, var(--light)) !important;
-    border-bottom: 1px solid var(--lightgray) !important;
+    background: color-mix(in srgb, var(--darkgray) 10%, var(--lightgray)) !important;
+    border-bottom: 1px solid color-mix(in srgb, var(--darkgray) 20%, var(--lightgray)) !important;
     font-family: var(--codeFont) !important;
     font-size: 0.8rem !important;
     font-weight: 500 !important;
-    color: var(--darkgray) !important;
+    color: var(--dark) !important;
     
     // Custom window dots on code blocks for premium feel
     &::before {
@@ -572,7 +572,7 @@ pre:hover .clipboard-button {
 }
 
 pre {
-  background: #0f172a !important; // Beautiful Slate-900 background
+  background: var(--lightgray) !important;
   border: none !important;
   margin: 0 !important;
   padding: 1.25rem 0 !important;
@@ -588,7 +588,7 @@ pre {
     padding: 0 !important;
     font-size: 0.85rem !important;
     line-height: 1.7 !important;
-    color: #cbd5e1 !important;
+    color: var(--dark) !important;
     display: block !important; // block layout for natural wrapping
     white-space: pre-wrap !important;
     word-break: break-word !important;
@@ -603,7 +603,7 @@ pre {
       white-space: pre-wrap !important;
       
       &[data-highlighted-line] {
-        background: rgba(96, 165, 250, 0.08) !important;
+        background: color-mix(in srgb, var(--secondary) 12%, var(--lightgray)) !important;
         border-left: 3px solid var(--secondary) !important;
       }
       
@@ -613,7 +613,7 @@ pre {
         width: 2.75rem !important;
         padding-right: 0.75rem !important;
         text-align: right !important;
-        color: rgba(148, 163, 184, 0.3) !important;
+        color: var(--gray) !important;
         font-size: 0.8em !important;
         user-select: none !important;
         
@@ -623,8 +623,8 @@ pre {
         top: 0 !important;
         bottom: 0 !important;
         z-index: 2 !important;
-        background: #0f172a !important;
-        border-right: 1px solid rgba(148, 163, 184, 0.15) !important;
+        background: var(--lightgray) !important;
+        border-right: 1px solid color-mix(in srgb, var(--darkgray) 15%, var(--lightgray)) !important;
         display: flex !important;
         align-items: flex-start !important;
         justify-content: flex-end !important;
@@ -632,7 +632,7 @@ pre {
       }
 
       &[data-highlighted-line]::before {
-        background: color-mix(in srgb, var(--secondary) 12%, #0f172a) !important;
+        background: color-mix(in srgb, var(--secondary) 12%, var(--lightgray)) !important;
       }
     }
   }
@@ -898,40 +898,11 @@ pre {
 
 // ─── Theme Overrides (Dark Mode Custom Styling) ──────────────────────────────
 [saved-theme="dark"] {
-  // Dark Mode Code Block Refinements
-  pre,
-  figure[data-rehype-pretty-code-figure] {
-    background: #090d16 !important; // rich dark obsidian block
-    border-color: #1e293b !important;
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5) !important;
-  }
-
-  figure[data-rehype-pretty-code-figure] > [data-rehype-pretty-code-title] {
-    background: #0e1628 !important;
-    border-bottom-color: #1e293b !important;
-    color: #94a3b8 !important;
-  }
-
   // Inline Code Badge
   code {
-    background: rgba(96, 165, 250, 0.1) !important;
-    border-color: rgba(96, 165, 250, 0.2) !important;
-    color: #93c5fd !important;
-  }
-
-  pre code {
-    background: none !important;
-    border: none !important;
-    color: #e2e8f0 !important;
-    
-    & > [data-line] {
-      &::before {
-        background: #090d16 !important;
-      }
-      &[data-highlighted-line]::before {
-        background: color-mix(in srgb, var(--secondary) 12%, #090d16) !important;
-      }
-    }
+    background: color-mix(in srgb, var(--secondary) 8%, var(--lightgray)) !important;
+    border-color: color-mix(in srgb, var(--secondary) 15%, transparent) !important;
+    color: var(--secondary) !important;
   }
 
   // Dark Tables
