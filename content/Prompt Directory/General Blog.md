@@ -1,4 +1,4 @@
-Write a DSA blog post on [TOPIC, e.g. "Two Pointers Technique"] for a CS 
+Write a blog post on [TOPIC, e.g. "Two Pointers Technique"] for a CS 
 undergraduate audience. The primary goal is deep, intuitive understanding 
 of the concept. Exam relevance is secondary — never let it shrink or 
 oversimplify an explanation.
@@ -18,20 +18,19 @@ Structure it exactly as follows:
   manually, showing state at each step
 
 ## 3. Pseudocode
-- Lipschutz style (Schaum's Outlines)
-- Numbered steps, := for assignment, bracketed ALL-CAPS comments per step
-- End with Exit.
+- CLRS Style
 
 ## 4. Implementation
-- Show code in C++, Python, and C# as separate named blocks
+- Show code in C++ and Python as separate named blocks
 - Use the same canonical example across all three for easy comparison
 - Add inline comments where the logic is non-obvious
 
 ## 5. Complexity Analysis
 | Case | Time | Space |
-- Best, average, worst for time with a one-line justification per case
+- Best, average, worst complexity
 - Space complexity with justification
 - Note whether it is in-place and why that matters
+- For general cases, include detailed analysis on complexity
 
 ## 6. Worked Examples
 - 2 problems (vary difficulty)
