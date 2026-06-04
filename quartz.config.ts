@@ -23,32 +23,32 @@ const config: QuartzConfig = {
       fontOrigin: "googleFonts",
       cdnCaching: true,
       typography: {
-        header: "Outfit",
-        body: "Inter",
+        header: "Plus Jakarta Sans",
+        body: "Plus Jakarta Sans",
         code: "JetBrains Mono",
       },
       colors: {
         lightMode: {
-          light: "#f8fafc",
-          lightgray: "#e2e8f0",
-          gray: "#94a3b8",
-          darkgray: "#334155",
-          dark: "#0f172a",
-          secondary: "#2563eb",
-          tertiary: "#0d9488",
-          highlight: "rgba(59, 130, 246, 0.08)",
-          textHighlight: "rgba(253, 224, 71, 0.5)",
+          light: "#fdfdfa", // soft soothing cream
+          lightgray: "#f0f0e8", // soft clay gray
+          gray: "#a3a397", // stone gray
+          darkgray: "#4a4a40", // warm charcoal
+          dark: "#1c1c14", // dark wood
+          secondary: "#3b593f", // organic forest green
+          tertiary: "#8c6239", // terracotta clay
+          highlight: "rgba(59, 89, 63, 0.07)", // soft green highlights
+          textHighlight: "rgba(230, 185, 128, 0.4)", // soft warm amber
         },
         darkMode: {
-          light: "#0b0f19",
-          lightgray: "#1e293b",
-          gray: "#64748b",
-          darkgray: "#cbd5e1",
-          dark: "#f8fafc",
-          secondary: "#60a5fa",
-          tertiary: "#2dd4bf",
-          highlight: "rgba(96, 165, 250, 0.12)",
-          textHighlight: "rgba(253, 224, 71, 0.3)",
+          light: "#121813", // deep dark forest night
+          lightgray: "#202a21", // slate pine forest
+          gray: "#667a68", // moss gray
+          darkgray: "#cbd3cb", // mist green gray
+          dark: "#f3f6f3", // mist white
+          secondary: "#6eb079", // soft sage green
+          tertiary: "#e6b980", // wheat gold
+          highlight: "rgba(110, 176, 121, 0.12)", // moss highlighted glow
+          textHighlight: "rgba(230, 185, 128, 0.25)",
         },
       },
     },
