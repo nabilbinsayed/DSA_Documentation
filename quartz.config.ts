@@ -23,8 +23,8 @@ const config: QuartzConfig = {
       fontOrigin: "googleFonts",
       cdnCaching: true,
       typography: {
-        header: "Plus Jakarta Sans",
-        body: "Plus Jakarta Sans",
+        header: "Quicksand",
+        body: "Nunito",
         code: "JetBrains Mono",
       },
       colors: {
