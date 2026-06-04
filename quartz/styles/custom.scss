@@ -1,227 +1,892 @@
+@use "./variables.scss" as *;
 @use "./base.scss";
 
-// ─── Custom enhancements for DSA documentation ──────────────────────────────
+// ─── Modern Color Scheme Adjustments & Reset ───────────────────────────────
+body {
+  font-family: var(--bodyFont) !important;
+  line-height: 1.75 !important;
+  letter-spacing: -0.005em;
+  background-color: var(--light) !important;
+  color: var(--darkgray) !important;
+  overflow-x: hidden;
+}
 
-// Enhanced sidebar styling
+// ─── Smooth Theme Transitions ────────────────────────────────────────────────
+body, 
+article, 
+pre, 
+code, 
+a, 
+tr, 
+td, 
+th, 
+.sidebar, 
+.toc, 
+.backlinks, 
+.graph, 
+.explorer-content, 
+.search-bar, 
+.search-layout, 
+header,
+footer,
+.callout {
+  transition: background-color 0.25s cubic-bezier(0.4, 0, 0.2, 1), 
+              border-color 0.25s cubic-bezier(0.4, 0, 0.2, 1), 
+              color 0.25s cubic-bezier(0.4, 0, 0.2, 1), 
+              box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+// ─── Desktop Layout & Floating Panels ────────────────────────────────────────
+.page {
+  padding: 0 1.5rem;
+  
+  #quartz-body {
+    column-gap: 2.5rem !important;
+    row-gap: 1.5rem !important;
+  }
+}
+
+// Float & border refinements for panels
 .sidebar {
-  // Subtle sidebar separator
+  padding-top: 5rem !important;
+  gap: 1.5rem !important;
+  
   &.left {
     border-right: 1px solid var(--lightgray);
-
-    @media (max-width: 800px) {
-      border-right: none;
-      border-bottom: 1px solid var(--lightgray);
-      padding-bottom: 1rem !important;
-      margin-bottom: 0.5rem;
+    padding-right: 1.5rem !important;
+  }
+  
+  &.right {
+    border-left: 1px solid var(--lightgray);
+    padding-left: 1.5rem !important;
+    
+    @media all and not ($desktop) {
+      border-left: none;
+      padding-left: 0 !important;
     }
   }
 }
 
-// Better search styling
-#search-container {
-  input {
-    border-radius: 8px !important;
-    border: 1.5px solid var(--lightgray) !important;
-    transition: border-color 0.2s ease, box-shadow 0.2s ease !important;
-    font-family: "Outfit", system-ui, sans-serif !important;
-
-    &:focus {
-      border-color: var(--secondary) !important;
-      box-shadow: 0 0 0 3px color-mix(in srgb, var(--secondary) 15%, transparent) !important;
-      outline: none !important;
-    }
-  }
-}
-
-// TOC — right sidebar refinements
-.toc {
-  font-size: 0.825rem !important;
-
-  & a {
-    font-weight: 400 !important;
-    opacity: 0.75;
-    transition: opacity 0.15s ease, color 0.15s ease !important;
-    font-family: "Outfit", system-ui, sans-serif;
-
-    &:hover,
-    &.in-view {
-      opacity: 1;
+// ─── Navigation Header Controls & Buttons ───────────────────────────────────
+.search-button {
+  border-radius: 9999px !important;
+  border: 1px solid var(--lightgray) !important;
+  padding: 0 1rem !important;
+  background: var(--light) !important;
+  transition: all 0.2s ease !important;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.02) !important;
+  height: 2.2rem !important;
+  
+  &:hover {
+    border-color: var(--secondary) !important;
+    box-shadow: 0 2px 8px color-mix(in srgb, var(--secondary) 10%, transparent) !important;
+    
+    .search-path {
+      stroke: var(--secondary) !important;
     }
   }
 
-  & > .toc-content {
-    & li {
-      line-height: 1.5rem !important;
-    }
-  }
-}
-
-// Footer refinements
-footer {
-  padding: 2rem 0 !important;
-  border-top: 1px solid var(--lightgray) !important;
-  font-size: 0.85rem !important;
-  color: var(--gray) !important;
-  font-family: "Outfit", system-ui, sans-serif;
-  margin-top: 3rem;
-
-  a {
+  p {
+    font-size: 0.85rem !important;
+    color: var(--gray) !important;
     font-weight: 500 !important;
-    opacity: 0.8;
-    &:hover { opacity: 1; }
+    font-family: var(--bodyFont) !important;
+  }
+
+  svg .search-path {
+    stroke: var(--darkgray) !important;
   }
 }
 
-// Backlinks & graph panel
-.backlinks,
-.graph {
-  border: 1px solid var(--lightgray);
-  border-radius: 10px;
-  padding: 1rem;
-  font-family: "Outfit", system-ui, sans-serif;
+.darkmode, .readermode {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 2.2rem !important;
+  height: 2.2rem !important;
+  border-radius: 50% !important;
+  background: var(--light) !important;
+  border: 1px solid var(--lightgray) !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.02) !important;
+  margin: 0 !important;
+  
+  &:hover {
+    border-color: var(--secondary) !important;
+    background: color-mix(in srgb, var(--secondary) 4%, var(--light)) !important;
+    transform: translateY(-1px);
+    
+    svg {
+      fill: var(--secondary) !important;
+      stroke: var(--secondary) !important;
+    }
+  }
+  
+  svg {
+    position: static !important;
+    width: 16px !important;
+    height: 16px !important;
+    fill: var(--darkgray) !important;
+    stroke: var(--darkgray) !important;
+  }
 }
 
-// Tag styling
+// ─── Interactive Explorer (Sidebar Navigation) ──────────────────────────────
+.explorer {
+  button.desktop-explorer {
+    font-family: var(--headerFont) !important;
+    font-weight: 600 !important;
+    color: var(--gray) !important;
+    text-transform: uppercase !important;
+    font-size: 0.75rem !important;
+    letter-spacing: 0.08em !important;
+    margin-bottom: 0.75rem !important;
+    opacity: 0.8;
+  }
+  
+  .folder-container {
+    padding: 0.25rem 0;
+    
+    a, button span {
+      font-size: 0.925rem !important;
+      font-family: var(--headerFont) !important;
+      font-weight: 500 !important;
+      color: var(--darkgray) !important;
+      transition: color 0.15s ease;
+      
+      &:hover {
+        color: var(--secondary) !important;
+      }
+    }
+    
+    &.active a {
+      color: var(--secondary) !important;
+      font-weight: 600 !important;
+    }
+    
+    .folder-icon {
+      color: var(--gray) !important;
+      transition: transform 0.2s ease, color 0.2s ease;
+      
+      &:hover {
+        color: var(--secondary) !important;
+      }
+    }
+  }
+  
+  .explorer-content ul {
+    .folder-outer > ul {
+      margin-left: 8px !important;
+      padding-left: 0.75rem !important;
+      border-left: 1px dashed var(--lightgray) !important;
+    }
+    
+    li > a {
+      font-size: 0.875rem !important;
+      color: var(--darkgray) !important;
+      opacity: 0.8;
+      transition: all 0.15s ease;
+      padding: 0.2rem 0.5rem;
+      border-radius: 6px;
+      display: inline-block;
+      width: calc(100% - 1rem);
+      margin: 0.1rem 0;
+      
+      &:hover {
+        color: var(--secondary) !important;
+        background: color-mix(in srgb, var(--secondary) 6%, transparent);
+        opacity: 1;
+      }
+      
+      &.active {
+        color: var(--secondary) !important;
+        background: color-mix(in srgb, var(--secondary) 8%, transparent) !important;
+        font-weight: 600 !important;
+        opacity: 1;
+      }
+    }
+  }
+}
+
+// ─── Table of Contents (TOC) & Sidebar Panels ────────────────────────────────
+.toc {
+  border: 1px solid var(--lightgray) !important;
+  border-radius: 12px !important;
+  padding: 1.25rem !important;
+  background: var(--light) !important;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.01) !important;
+  margin-bottom: 1.5rem;
+  
+  #toc-header {
+    font-family: var(--headerFont) !important;
+    font-size: 0.75rem !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.08em !important;
+    font-weight: 600 !important;
+    color: var(--gray) !important;
+    margin-bottom: 0.75rem !important;
+  }
+  
+  .toc-content {
+    li {
+      line-height: 1.6rem !important;
+      margin: 0.25rem 0;
+      
+      a {
+        font-size: 0.85rem !important;
+        color: var(--darkgray) !important;
+        opacity: 0.75;
+        font-weight: 400 !important;
+        
+        &:hover, &.in-view {
+          color: var(--secondary) !important;
+          opacity: 1;
+          font-weight: 500 !important;
+        }
+      }
+    }
+  }
+}
+
+.backlinks, .graph {
+  border: 1px solid var(--lightgray) !important;
+  border-radius: 12px !important;
+  padding: 1.25rem !important;
+  background: var(--light) !important;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.01) !important;
+  margin-bottom: 1.5rem;
+  
+  h3 {
+    font-family: var(--headerFont) !important;
+    font-size: 0.75rem !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.08em !important;
+    font-weight: 600 !important;
+    color: var(--gray) !important;
+    margin-top: 0 !important;
+    margin-bottom: 0.75rem !important;
+  }
+  
+  ul {
+    padding-left: 0 !important;
+    list-style: none !important;
+    margin: 0 !important;
+    
+    li {
+      line-height: 1.6rem;
+      margin: 0.25rem 0;
+      
+      a {
+        font-size: 0.85rem !important;
+        color: var(--darkgray) !important;
+        
+        &:hover {
+          color: var(--secondary) !important;
+        }
+      }
+    }
+  }
+}
+
+// ─── Badge Tags ─────────────────────────────────────────────────────────────
 .tag {
-  font-family: "Outfit", system-ui, sans-serif !important;
-  font-size: 0.78rem !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  font-family: var(--bodyFont) !important;
+  font-size: 0.75rem !important;
   font-weight: 500 !important;
-  letter-spacing: 0.02em;
-  padding: 0.2rem 0.55rem !important;
-  border-radius: 99px !important;
-  border: 1.5px solid color-mix(in srgb, var(--secondary) 30%, transparent) !important;
+  padding: 0.15rem 0.55rem !important;
+  border-radius: 9999px !important;
   background: color-mix(in srgb, var(--secondary) 8%, transparent) !important;
   color: var(--secondary) !important;
-  transition: background 0.15s ease, border-color 0.15s ease !important;
-
+  border: 1px solid color-mix(in srgb, var(--secondary) 20%, transparent) !important;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  text-decoration: none !important;
+  margin: 0.15rem 0.15rem !important;
+  
   &:hover {
-    background: color-mix(in srgb, var(--secondary) 16%, transparent) !important;
-    border-color: color-mix(in srgb, var(--secondary) 50%, transparent) !important;
+    background: var(--secondary) !important;
+    color: var(--light) !important;
+    border-color: var(--secondary) !important;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 10px color-mix(in srgb, var(--secondary) 20%, transparent);
   }
 }
 
-// Article-level refinements
+// ─── Article Prose Styling ──────────────────────────────────────────────────
 article {
-  // Nicer list bullets
-  ul {
-    padding-left: 1.5rem;
-
-    & > li::marker {
-      color: var(--secondary);
-    }
+  p {
+    font-size: 1rem !important;
+    color: var(--darkgray) !important;
+    line-height: 1.8 !important;
+    margin: 1rem 0 !important;
   }
 
-  ol {
-    padding-left: 1.5rem;
-
-    & > li::marker {
-      color: var(--secondary);
-      font-weight: 600;
-      font-family: "Outfit", system-ui, sans-serif;
-    }
-  }
-
-  // First paragraph lead style
   & > p:first-of-type {
-    font-size: 1.05rem;
-    line-height: 1.85rem;
+    font-size: 1.05rem !important;
+    line-height: 1.85 !important;
+    color: var(--dark) !important;
+  }
+  
+  h1 {
+    font-size: 2.25rem !important;
+    letter-spacing: -0.035em !important;
+    border-bottom: 2px solid var(--lightgray) !important;
+    padding-bottom: 0.75rem !important;
+    margin-bottom: 1.75rem !important;
+    margin-top: 3rem !important;
+  }
+
+  h2 {
+    font-size: 1.6rem !important;
+    letter-spacing: -0.025em !important;
+    border-bottom: 1px solid var(--lightgray) !important;
+    padding-bottom: 0.4rem !important;
+    margin-top: 2.5rem !important;
+    margin-bottom: 1rem !important;
+  }
+
+  h3 {
+    font-size: 1.25rem !important;
+    letter-spacing: -0.015em !important;
+    margin-top: 2rem !important;
+    margin-bottom: 0.75rem !important;
   }
 }
 
-// Page title refinement
 .article-title {
-  font-family: "Outfit", system-ui, sans-serif;
-  font-weight: 700;
-  letter-spacing: -0.03em;
+  font-size: 2.5rem !important;
+  letter-spacing: -0.04em !important;
+  font-weight: 800 !important;
+  line-height: 1.15 !important;
 }
 
-// Breadcrumb styling
-.breadcrumb-container {
-  font-family: "Outfit", system-ui, sans-serif;
-  font-size: 0.85rem;
-  opacity: 0.7;
-  margin-bottom: 0.5rem;
+// ─── Blockquotes & Callouts ─────────────────────────────────────────────────
+blockquote {
+  margin: 1.75rem 0 !important;
+  padding: 0.75rem 1.25rem !important;
+  border-left: 4px solid var(--secondary) !important;
+  background: color-mix(in srgb, var(--secondary) 4%, var(--light)) !important;
+  border-radius: 0 12px 12px 0 !important;
+  box-shadow: inset 1px 0 0 rgba(0, 0, 0, 0.01) !important;
+  
+  p {
+    font-style: italic !important;
+    color: var(--darkgray) !important;
+    font-size: 1rem !important;
+    line-height: 1.75 !important;
+  }
 }
 
-// Graph view node labels
-.graph-label {
-  font-family: "Outfit", system-ui, sans-serif !important;
-  font-size: 0.75rem;
+.callout {
+  border: 1px solid var(--lightgray) !important;
+  border-radius: 12px !important;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.01) !important;
+  margin: 1.75rem 0 !important;
+  overflow: hidden !important;
+  
+  .callout-title {
+    font-family: var(--headerFont) !important;
+    font-weight: 600 !important;
+    padding: 0.65rem 1rem !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.5rem !important;
+    font-size: 0.95rem !important;
+  }
+  
+  .callout-content {
+    padding: 1rem !important;
+    background: var(--light) !important;
+    
+    p {
+      margin: 0.5rem 0 !important;
+      &:first-child { margin-top: 0 !important; }
+      &:last-child { margin-bottom: 0 !important; }
+    }
+  }
 }
 
-// Mermaid diagrams
-.mermaid svg {
-  border-radius: 10px;
-  padding: 1rem;
-  background: color-mix(in srgb, var(--darkgray) 3%, var(--light));
-  border: 1px solid var(--lightgray);
+// ─── Responsive Elements (Tables, Math, Media) ──────────────────────────────
+.table-container {
+  width: 100% !important;
+  overflow-x: auto !important;
+  -webkit-overflow-scrolling: touch;
+  border: 1px solid var(--lightgray) !important;
+  border-radius: 8px !important;
+  margin: 1.75rem 0 !important;
+  background: var(--light) !important;
+  
+  table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    margin: 0 !important;
+    
+    th {
+      background: color-mix(in srgb, var(--secondary) 5%, var(--light)) !important;
+      border-bottom: 2px solid var(--lightgray) !important;
+      padding: 0.75rem 1rem !important;
+      font-weight: 600 !important;
+      color: var(--dark) !important;
+      font-size: 0.85rem !important;
+      letter-spacing: 0.02em !important;
+    }
+    
+    td {
+      padding: 0.75rem 1rem !important;
+      border-bottom: 1px solid var(--lightgray) !important;
+      font-size: 0.9rem !important;
+    }
+    
+    tr:last-child td {
+      border-bottom: none !important;
+    }
+    
+    tr:nth-child(even) {
+      background: color-mix(in srgb, var(--lightgray) 15%, transparent) !important;
+    }
+    
+    tr:hover {
+      background: color-mix(in srgb, var(--secondary) 4%, transparent) !important;
+    }
+  }
 }
 
-// Math display blocks
+// Scale and fit math equations nicely
 mjx-container[display="true"] {
-  padding: 1.25rem;
-  background: color-mix(in srgb, var(--darkgray) 3%, var(--light));
-  border-radius: 10px;
-  border: 1px solid var(--lightgray);
-  overflow-x: auto;
-  margin: 1.25rem 0;
+  padding: 1.25rem !important;
+  background: color-mix(in srgb, var(--darkgray) 2%, var(--light)) !important;
+  border-radius: 12px !important;
+  border: 1px solid var(--lightgray) !important;
+  overflow-x: auto !important;
+  margin: 1.5rem 0 !important;
 }
 
-// Dark mode tweaks
+// Responsively wrap embeds & media
+img {
+  max-width: 100% !important;
+  height: auto !important;
+  border-radius: 10px !important;
+  border: 1px solid var(--lightgray) !important;
+  transition: transform 0.25s ease, box-shadow 0.25s ease !important;
+  
+  &:hover {
+    transform: scale(1.005);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08) !important;
+  }
+}
+
+// ─── Code Blocks & Inline Code Badge ────────────────────────────────────────
+code {
+  font-family: var(--codeFont) !important;
+  font-size: 0.85em !important;
+  padding: 0.2rem 0.4rem !important;
+  background: color-mix(in srgb, var(--secondary) 8%, var(--lightgray)) !important;
+  border: 1px solid color-mix(in srgb, var(--secondary) 15%, transparent) !important;
+  border-radius: 6px !important;
+  color: var(--secondary) !important;
+  font-weight: 500 !important;
+}
+
+figure[data-rehype-pretty-code-figure] {
+  position: relative !important;
+  border-radius: 12px !important;
+  border: 1px solid var(--lightgray) !important;
+  overflow: hidden !important;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.04), 0 1px 3px rgba(15, 23, 42, 0.02) !important;
+  background: var(--light) !important;
+  margin: 1.75rem 0 !important;
+  
+  & > [data-rehype-pretty-code-title] {
+    display: flex !important;
+    align-items: center !important;
+    padding: 0.65rem 1rem !important;
+    background: color-mix(in srgb, var(--lightgray) 20%, var(--light)) !important;
+    border-bottom: 1px solid var(--lightgray) !important;
+    font-family: var(--codeFont) !important;
+    font-size: 0.8rem !important;
+    font-weight: 500 !important;
+    color: var(--darkgray) !important;
+    
+    // Custom window dots on code blocks for premium feel
+    &::before {
+      content: "";
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #ef4444;
+      box-shadow: 14px 0 0 #f59e0b, 28px 0 0 #10b981;
+      margin-right: 2.2rem;
+      flex-shrink: 0;
+    }
+  }
+}
+
+pre {
+  background: #0f172a !important; // Beautiful Slate-900 background
+  border: none !important;
+  margin: 0 !important;
+  padding: 1.25rem 0 !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  
+  code {
+    background: none !important;
+    border: none !important;
+    padding: 0 !important;
+    font-size: 0.85rem !important;
+    line-height: 1.65 !important;
+    color: #cbd5e1 !important;
+    
+    & > [data-line] {
+      padding: 0 1.25rem 0 1rem !important;
+      border-left: 3px solid transparent;
+      
+      &[data-highlighted-line] {
+        background: rgba(96, 165, 250, 0.1) !important;
+        border-left: 3px solid var(--secondary) !important;
+      }
+      
+      &::before {
+        color: rgba(148, 163, 184, 0.35) !important;
+        font-weight: 400 !important;
+      }
+    }
+  }
+}
+
+// ─── Command Palette Search Modal ───────────────────────────────────────────
+.search-container {
+  background: rgba(15, 23, 42, 0.45) !important;
+  backdrop-filter: blur(12px) !important;
+  z-index: 1000 !important;
+  
+  .search-space {
+    width: min(650px, 92vw) !important;
+    margin-top: 15vh !important;
+    
+    & > * {
+      border-radius: 12px !important;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25) !important;
+    }
+    
+    input.search-bar {
+      width: 100%;
+      height: 3.5rem;
+      font-size: 1.1rem !important;
+      padding: 0 1.25rem !important;
+      border: 1px solid var(--lightgray) !important;
+      border-radius: 12px 12px 0 0 !important;
+      background: var(--light) !important;
+      color: var(--dark) !important;
+      margin-bottom: 0 !important;
+      border-bottom: 1px solid var(--lightgray) !important;
+      
+      &:focus {
+        outline: none !important;
+      }
+    }
+    
+    .search-layout {
+      border: 1px solid var(--lightgray) !important;
+      border-top: none !important;
+      border-radius: 0 0 12px 12px !important;
+      background: var(--light) !important;
+      margin-bottom: 0 !important;
+      overflow: hidden;
+      
+      .results-container {
+        border-right: 1px solid var(--lightgray) !important;
+        
+        .result-card {
+          border-bottom: 1px solid var(--lightgray) !important;
+          padding: 1rem !important;
+          background: transparent !important;
+          
+          &:hover, &:focus, &.focus {
+            background: color-mix(in srgb, var(--secondary) 6%, var(--lightgray)) !important;
+          }
+          
+          h3 {
+            font-family: var(--headerFont) !important;
+            font-size: 0.95rem !important;
+            font-weight: 600 !important;
+            color: var(--dark) !important;
+          }
+          
+          p {
+            font-size: 0.85rem !important;
+            color: var(--darkgray) !important;
+            margin-top: 0.25rem;
+          }
+          
+          .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.25rem;
+            margin-top: 0.5rem !important;
+            
+            li p {
+              font-size: 0.7rem !important;
+              padding: 0.1rem 0.45rem !important;
+              border-radius: 999px !important;
+              background-color: color-mix(in srgb, var(--secondary) 10%, transparent) !important;
+              color: var(--secondary) !important;
+              border: 1px solid color-mix(in srgb, var(--secondary) 15%, transparent) !important;
+            }
+          }
+        }
+      }
+      
+      .preview-container {
+        padding: 1.5rem !important;
+        background: color-mix(in srgb, var(--lightgray) 8%, var(--light)) !important;
+        
+        .preview-inner {
+          h1, h2, h3 {
+            margin-top: 1rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+// ─── Mobile Responsiveness Upgrades ──────────────────────────────────────────
+@media all and ($mobile) {
+  // Mobile Sticky Header
+  .sidebar.left {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100vw !important;
+    height: 3.5rem !important;
+    box-sizing: border-box !important;
+    padding: 0 1rem !important;
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    background: rgba(var(--light), 0.85) !important;
+    backdrop-filter: blur(12px) !important;
+    border-bottom: 1px solid var(--lightgray) !important;
+    border-right: none !important;
+    z-index: 999 !important;
+    margin: 0 !important;
+    gap: 0.5rem !important;
+  }
+  
+  // Pushes content down on mobile (adds clearance for header)
+  #quartz-body {
+    padding-top: 4.5rem !important;
+    
+    .sidebar.right {
+      display: none !important; // Hide right sidebar on mobile completely
+    }
+  }
+
+  // Clear responsive margins/padding for content container
+  .center {
+    padding: 0 0.5rem !important;
+    margin: 0 !important;
+  }
+  
+  article {
+    padding: 0 0.5rem !important;
+    margin: 0 !important;
+  }
+
+  .page-title {
+    margin: 0 !important;
+    font-size: 1.1rem !important;
+    font-weight: 700 !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    max-width: 42vw !important;
+    
+    a {
+      color: var(--dark) !important;
+    }
+  }
+
+  // Icons alignment inside mobile header
+  .sidebar.left .flex-component {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: 0.4rem !important;
+  }
+
+  // Circular Icon Buttons for mobile header controls
+  .search-button {
+    width: 2.2rem !important;
+    height: 2.2rem !important;
+    padding: 0 !important;
+    justify-content: center !important;
+    border-radius: 50% !important;
+    flex-shrink: 0 !important;
+    
+    p {
+      display: none !important;
+    }
+    
+    svg {
+      margin: 0 !important;
+      width: 16px !important;
+      height: 16px !important;
+    }
+  }
+
+  .darkmode, .readermode {
+    width: 2.2rem !important;
+    height: 2.2rem !important;
+    flex-shrink: 0 !important;
+  }
+
+  // Mobilize Hamburger button layout
+  .explorer-toggle.mobile-explorer {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 2.2rem !important;
+    height: 2.2rem !important;
+    border-radius: 50% !important;
+    background: color-mix(in srgb, var(--lightgray) 40%, transparent) !important;
+    border: 1px solid var(--lightgray) !important;
+    padding: 0 !important;
+    flex-shrink: 0 !important;
+    
+    svg {
+      width: 16px !important;
+      height: 16px !important;
+      stroke: var(--darkgray) !important;
+    }
+  }
+
+  // Slide-out Navigation Drawer
+  .explorer {
+    order: -1 !important;
+    margin: 0 !important;
+
+    // Visual dark overlay when drawer is open
+    &:not(.collapsed)::before {
+      content: "";
+      position: fixed;
+      top: 3.5rem;
+      left: 0;
+      width: 100vw;
+      height: calc(100vh - 3.5rem);
+      background: rgba(15, 23, 42, 0.4);
+      backdrop-filter: blur(4px);
+      z-index: 9998;
+      pointer-events: none;
+    }
+    
+    .explorer-content {
+      position: fixed !important;
+      top: 3.5rem !important;
+      left: 0 !important;
+      width: min(300px, 80vw) !important;
+      height: calc(100vh - 3.5rem) !important;
+      max-height: calc(100vh - 3.5rem) !important;
+      background: var(--light) !important;
+      border-right: 1px solid var(--lightgray) !important;
+      box-shadow: 15px 0 30px rgba(0, 0, 0, 0.08) !important;
+      padding: 1.5rem 1rem 3rem 1rem !important;
+      box-sizing: border-box !important;
+      z-index: 9999 !important;
+      overflow-y: auto !important;
+      visibility: hidden;
+      transform: translateX(-100%);
+      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.25s ease !important;
+    }
+
+    &:not(.collapsed) .explorer-content {
+      transform: translateX(0) !important;
+      visibility: visible !important;
+    }
+  }
+}
+
+// ─── Theme Overrides (Dark Mode Custom Styling) ──────────────────────────────
 [saved-theme="dark"] {
-  // Deep navy code block — restores the original bluish feel
+  // Dark Mode Code Block Refinements
   pre,
   figure[data-rehype-pretty-code-figure] {
-    background: #0f1629 !important;
-    border-color: #1e2d4a !important;
-    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4) !important;
+    background: #090d16 !important; // rich dark obsidian block
+    border-color: #1e293b !important;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5) !important;
   }
 
   figure[data-rehype-pretty-code-figure] > [data-rehype-pretty-code-title] {
-    background: #0a0f1e !important;
-    border-bottom-color: #1e2d4a !important;
-    color: #6b8cba !important;
+    background: #0e1628 !important;
+    border-bottom-color: #1e293b !important;
+    color: #94a3b8 !important;
   }
 
-  // Inline code in dark mode
+  // Inline Code Badge
   code {
-    background: rgba(79, 124, 255, 0.12) !important;
-    border-color: rgba(79, 124, 255, 0.2) !important;
-    color: #a8c4ff !important;
+    background: rgba(96, 165, 250, 0.1) !important;
+    border-color: rgba(96, 165, 250, 0.2) !important;
+    color: #93c5fd !important;
   }
 
-  // Don't double-apply to pre > code
   pre code {
     background: none !important;
     border: none !important;
-    color: inherit !important;
+    color: #e2e8f0 !important;
   }
 
-  // Softer image shadow in dark
-  img {
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35) !important;
+  // Dark Tables
+  .table-container {
+    border-color: #1e293b !important;
+    
+    table {
+      th {
+        background: #0e1628 !important;
+        border-bottom-color: #1e293b !important;
+        color: var(--darkgray) !important;
+      }
+      
+      td {
+        border-bottom-color: #1e293b !important;
+      }
+      
+      tr:nth-child(even) {
+        background: rgba(15, 23, 42, 0.3) !important;
+      }
+      
+      tr:hover {
+        background: rgba(96, 165, 250, 0.04) !important;
+      }
+    }
   }
 
-  // Table header in dark
-  th {
-    background: #0a0f1e !important;
-    color: #6b8cba !important;
-  }
-
-  tr:nth-child(even) {
-    background: rgba(15, 22, 41, 0.5) !important;
-  }
-
-  tr:hover td {
-    background: rgba(79, 124, 255, 0.06) !important;
-  }
-
+  // Dark Blockquotes
   blockquote {
-    background: color-mix(in srgb, var(--secondary) 8%, transparent) !important;
+    background: color-mix(in srgb, var(--secondary) 10%, transparent) !important;
   }
 
-  // Sidebar border in dark
+  // Subtle separator borders
   .sidebar.left {
-    border-right-color: #1e2d4a !important;
+    border-right-color: #1e293b !important;
+  }
+  
+  .sidebar.right {
+    border-left-color: #1e293b !important;
+  }
+
+  // Explorer Dashed Lines
+  .explorer .explorer-content ul .folder-outer > ul {
+    border-left-color: #1e293b !important;
+  }
+
+  // SVG adjustments for dark modes
+  .lucide-menu, .lucide {
+    stroke: var(--darkgray) !important;
   }
 }
