@@ -491,6 +491,12 @@ code {
   border-radius: 6px !important;
   color: #334155 !important; // Slate 700
   font-weight: 500 !important;
+
+  [saved-theme="dark"] & {
+    background: #1e293b !important; // Slate 800
+    border-color: #334155 !important; // Slate 700
+    color: #cbd5e1 !important; // Slate 300
+  }
 }
 
 figure[data-rehype-pretty-code-figure] {
@@ -501,6 +507,12 @@ figure[data-rehype-pretty-code-figure] {
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03) !important;
   background: #f8fafc !important; // neutral Slate 50
   margin: 1.75rem 0 !important;
+
+  [saved-theme="dark"] & {
+    background: #0f172a !important; // Slate 900
+    border-color: #334155 !important; // Slate 700
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3) !important;
+  }
   
   pre {
     position: static !important; // Absolute copy button aligns with figure
@@ -516,6 +528,12 @@ figure[data-rehype-pretty-code-figure] {
     font-size: 0.8rem !important;
     font-weight: 500 !important;
     color: #475569 !important; // Slate 600
+
+    [saved-theme="dark"] & {
+      background: #1e293b !important; // Slate 800
+      border-bottom-color: #334155 !important; // Slate 700
+      color: #cbd5e1 !important; // Slate 300
+    }
     
     // Custom window dots on code blocks for premium feel
     &::before {
@@ -546,6 +564,11 @@ figure[data-rehype-pretty-code-figure] {
   border-radius: 6px !important;
   background: rgba(148, 163, 184, 0.1) !important;
   border: 1px solid rgba(148, 163, 184, 0.2) !important;
+
+  [saved-theme="dark"] & {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border-color: rgba(255, 255, 255, 0.1) !important;
+  }
   cursor: pointer !important;
   opacity: 0 !important;
   transition: all 0.2s ease !important;
@@ -558,6 +581,10 @@ figure[data-rehype-pretty-code-figure] {
     filter: none !important;
     position: static !important;
     margin: 0 !important;
+
+    [saved-theme="dark"] & {
+      fill: #cbd5e1 !important; // Slate 300
+    }
   }
   
   &:hover {
@@ -565,6 +592,14 @@ figure[data-rehype-pretty-code-figure] {
     border-color: #cbd5e1 !important; // Slate 300
     & > svg {
       fill: #475569 !important;
+    }
+    
+    [saved-theme="dark"] & {
+      background: rgba(255, 255, 255, 0.15) !important;
+      border-color: rgba(255, 255, 255, 0.25) !important;
+      & > svg {
+        fill: #f8fafc !important;
+      }
     }
   }
 }
@@ -584,6 +619,10 @@ pre {
   position: relative; // Fallback if no figure parent
   white-space: pre-wrap !important;
   word-wrap: break-word !important;
+
+  [saved-theme="dark"] & {
+    background: #0f172a !important; // Slate 900
+  }
   
   code {
     background: none !important;
@@ -608,6 +647,10 @@ pre {
       &[data-highlighted-line] {
         background: #f1f5f9 !important; // Slate 100
         border-left: 3px solid #3b82f6 !important; // Blue 500 for highlight
+
+        [saved-theme="dark"] & {
+          background: #1e293b !important; // Slate 800
+        }
       }
       
       &::before {
@@ -632,10 +675,20 @@ pre {
         align-items: flex-start !important;
         justify-content: flex-end !important;
         box-sizing: border-box !important;
+
+        [saved-theme="dark"] & {
+          background: #0f172a !important; // Slate 900
+          border-right-color: #334155 !important; // Slate 700
+          color: #64748b !important; // Slate 500
+        }
       }
 
       &[data-highlighted-line]::before {
         background: #f1f5f9 !important; // Slate 100
+
+        [saved-theme="dark"] & {
+          background: #1e293b !important; // Slate 800
+        }
       }
     }
   }
