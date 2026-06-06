@@ -320,21 +320,22 @@ footer,
 
 // ─── Article Prose Styling ──────────────────────────────────────────────────
 article {
+  // Comfortable reading width — doesn't exceed the center column
   p {
-    font-size: 1rem !important;
+    font-size: 1.0125rem !important;
     color: var(--darkgray) !important;
-    line-height: 1.8 !important;
-    margin: 1rem 0 !important;
+    line-height: 1.85 !important;
+    margin: 1.1rem 0 !important;
   }
 
   & > p:first-of-type {
     font-size: 1.05rem !important;
-    line-height: 1.85 !important;
+    line-height: 1.9 !important;
     color: var(--dark) !important;
   }
   
   h1 {
-    font-size: 2.25rem !important;
+    font-size: 2.2rem !important;
     letter-spacing: -0.035em !important;
     border-bottom: 2px solid var(--lightgray) !important;
     padding-bottom: 0.75rem !important;
@@ -343,7 +344,7 @@ article {
   }
 
   h2 {
-    font-size: 1.6rem !important;
+    font-size: 1.55rem !important;
     letter-spacing: -0.025em !important;
     border-bottom: 1px solid var(--lightgray) !important;
     padding-bottom: 0.4rem !important;
@@ -352,15 +353,27 @@ article {
   }
 
   h3 {
-    font-size: 1.25rem !important;
+    font-size: 1.2rem !important;
     letter-spacing: -0.015em !important;
     margin-top: 2rem !important;
     margin-bottom: 0.75rem !important;
   }
+
+  // Improve list readability
+  ul, ol {
+    padding-left: 1.5rem !important;
+    margin: 0.75rem 0 !important;
+    
+    li {
+      line-height: 1.85 !important;
+      margin: 0.3rem 0 !important;
+      font-size: 1.0125rem !important;
+    }
+  }
 }
 
 .article-title {
-  font-size: 2.5rem !important;
+  font-size: 2.4rem !important;
   letter-spacing: -0.04em !important;
   font-weight: 800 !important;
   line-height: 1.15 !important;
@@ -481,125 +494,132 @@ img {
   }
 }
 
-// ─── Code Blocks & Inline Code Badge ────────────────────────────────────────
+// ─── Inline Code Badge ────────────────────────────────────────────────────────
 code {
   font-family: var(--codeFont) !important;
-  font-size: 0.85em !important;
-  padding: 0.2rem 0.4rem !important;
-  background: #f1f5f9 !important; // neutral Slate 100
-  border: 1px solid #e2e8f0 !important; // neutral Slate 200
-  border-radius: 6px !important;
-  color: #334155 !important; // Slate 700
+  font-size: 0.84em !important;
+  padding: 0.18em 0.45em !important;
+  background: #f1f5f9 !important;
+  border: 1px solid #dde3ed !important;
+  border-radius: 5px !important;
+  color: #1e40af !important; // blue-800 — distinctive but readable
   font-weight: 500 !important;
+  letter-spacing: -0.01em !important;
 
   [saved-theme="dark"] & {
-    background: #1e293b !important; // Slate 800
-    border-color: #334155 !important; // Slate 700
-    color: #cbd5e1 !important; // Slate 300
+    background: #1a2235 !important;
+    border-color: #2d3f5e !important;
+    color: #93c5fd !important; // blue-300
   }
 }
 
+// ─── Code Block (figure wrapper) ─────────────────────────────────────────────
 figure[data-rehype-pretty-code-figure] {
   position: relative !important;
-  border-radius: 12px !important;
-  border: 1px solid #e2e8f0 !important;
+  border-radius: 10px !important;
+  border: 1px solid #dde3ed !important;
   overflow: hidden !important;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03) !important;
-  background: #f8fafc !important; // neutral Slate 50
-  margin: 1.75rem 0 !important;
+  box-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.06),
+    0 4px 16px rgba(0, 0, 0, 0.05) !important;
+  background: #f8fafc !important;
+  margin: 2rem 0 !important;
 
   [saved-theme="dark"] & {
-    background: #0f172a !important; // Slate 900
-    border-color: #334155 !important; // Slate 700
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3) !important;
-  }
-  
-  pre {
-    position: static !important; // Absolute copy button aligns with figure
+    background: #0d1117 !important;
+    border-color: #21262d !important;
+    box-shadow:
+      0 1px 3px rgba(0, 0, 0, 0.3),
+      0 8px 24px rgba(0, 0, 0, 0.4) !important;
   }
 
+  pre {
+    position: static !important;
+  }
+
+  // ── Title bar (filename / language label) ──────────────────────────────────
   & > [data-rehype-pretty-code-title] {
     display: flex !important;
     align-items: center !important;
-    padding: 0.65rem 1rem !important;
-    background: #f1f5f9 !important; // Slate 100
-    border-bottom: 1px solid #e2e8f0 !important;
+    gap: 0.6rem !important;
+    padding: 0.6rem 1rem 0.6rem 1.1rem !important;
+    background: #eef1f7 !important;
+    border-bottom: 1px solid #dde3ed !important;
     font-family: var(--codeFont) !important;
-    font-size: 0.8rem !important;
+    font-size: 0.78rem !important;
     font-weight: 500 !important;
-    color: #475569 !important; // Slate 600
+    color: #4b5563 !important;
+    letter-spacing: 0.01em !important;
 
     [saved-theme="dark"] & {
-      background: #1e293b !important; // Slate 800
-      border-bottom-color: #334155 !important; // Slate 700
-      color: #cbd5e1 !important; // Slate 300
+      background: #161b22 !important;
+      border-bottom-color: #21262d !important;
+      color: #8b949e !important;
     }
-    
-    // Custom window dots on code blocks for premium feel
+
+    // macOS traffic-light dots
     &::before {
       content: "";
       display: inline-block;
-      width: 8px;
-      height: 8px;
+      width: 10px;
+      height: 10px;
       border-radius: 50%;
-      background: #ef4444;
-      box-shadow: 14px 0 0 #f59e0b, 28px 0 0 #10b981;
-      margin-right: 2.2rem;
+      background: #ff5f57;
+      box-shadow: 16px 0 0 #febc2e, 32px 0 0 #28c840;
+      margin-right: 2.4rem;
       flex-shrink: 0;
     }
   }
 }
 
-// Universal copy button styling
+// ─── Copy button ──────────────────────────────────────────────────────────────
 .clipboard-button {
   position: absolute !important;
-  top: 0.45rem !important;
-  right: 0.75rem !important;
+  top: 0.4rem !important;
+  right: 0.6rem !important;
   z-index: 10 !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  width: 1.8rem !important;
-  height: 1.8rem !important;
+  width: 1.75rem !important;
+  height: 1.75rem !important;
   border-radius: 6px !important;
-  background: rgba(148, 163, 184, 0.1) !important;
-  border: 1px solid rgba(148, 163, 184, 0.2) !important;
-
-  [saved-theme="dark"] & {
-    background: rgba(255, 255, 255, 0.05) !important;
-    border-color: rgba(255, 255, 255, 0.1) !important;
-  }
+  background: rgba(148, 163, 184, 0.08) !important;
+  border: 1px solid rgba(148, 163, 184, 0.18) !important;
   cursor: pointer !important;
   opacity: 0 !important;
-  transition: all 0.2s ease !important;
+  transition: opacity 0.18s ease, background 0.18s ease !important;
   box-sizing: border-box !important;
-  
+
+  [saved-theme="dark"] & {
+    background: rgba(255, 255, 255, 0.04) !important;
+    border-color: rgba(255, 255, 255, 0.08) !important;
+  }
+
   & > svg {
     width: 13px !important;
     height: 13px !important;
-    fill: #94a3b8 !important; // Slate 400
+    fill: #94a3b8 !important;
     filter: none !important;
     position: static !important;
     margin: 0 !important;
 
     [saved-theme="dark"] & {
-      fill: #cbd5e1 !important; // Slate 300
+      fill: #6e7681 !important;
     }
   }
-  
+
   &:hover {
-    background: #e2e8f0 !important; // Slate 200
-    border-color: #cbd5e1 !important; // Slate 300
-    & > svg {
-      fill: #475569 !important;
-    }
-    
+    background: #e2e8f0 !important;
+    border-color: #c4c9d4 !important;
+    opacity: 1 !important;
+
+    & > svg { fill: #334155 !important; }
+
     [saved-theme="dark"] & {
-      background: rgba(255, 255, 255, 0.15) !important;
-      border-color: rgba(255, 255, 255, 0.25) !important;
-      & > svg {
-        fill: #f8fafc !important;
-      }
+      background: rgba(240, 246, 252, 0.08) !important;
+      border-color: rgba(240, 246, 252, 0.18) !important;
+      & > svg { fill: #c9d1d9 !important; }
     }
   }
 }
@@ -609,85 +629,94 @@ pre:hover .clipboard-button {
   opacity: 1 !important;
 }
 
+// ─── <pre> core ───────────────────────────────────────────────────────────────
 pre {
-  background: #f8fafc !important; // neutral Slate 50
+  background: #f8fafc !important;
   border: none !important;
   margin: 0 !important;
-  padding: 1.25rem 0 !important;
+  padding: 1rem 0 !important;
   box-shadow: none !important;
   border-radius: 0 !important;
-  position: relative; // Fallback if no figure parent
+  position: relative;
+  overflow-x: auto !important;
+  overflow-y: visible !important;
   white-space: pre-wrap !important;
   word-wrap: break-word !important;
 
   [saved-theme="dark"] & {
-    background: #0f172a !important; // Slate 900
+    background: #0d1117 !important;
   }
-  
+
   code {
     background: none !important;
     border: none !important;
     padding: 0 !important;
-    font-size: 0.85rem !important;
-    line-height: 1.7 !important;
-    display: block !important; // block layout for natural wrapping
+    color: inherit !important;
+    font-size: 0.855rem !important;
+    line-height: 1.75 !important;
+    letter-spacing: 0 !important;
+    display: block !important;
     white-space: pre-wrap !important;
     word-break: break-word !important;
     overflow-wrap: break-word !important;
-    color: inherit; // Restores actual syntax highlighting colors
-    
+
     & > [data-line] {
-      padding: 0 1.25rem 0 3.75rem !important; // Indent line text to clear absolute numbers
-      border-left: 3px solid transparent;
-      display: block !important; // Block layout allows wrapping of tokens
+      padding: 0 1.5rem 0 1rem !important;
+      padding-left: calc(3rem + 1rem) !important;
+      border-left: 3px solid transparent !important;
+      display: block !important;
       position: relative !important;
-      word-wrap: break-word !important;
       white-space: pre-wrap !important;
-      
+      word-wrap: break-word !important;
+
       &[data-highlighted-line] {
-        background: #f1f5f9 !important; // Slate 100
-        border-left: 3px solid #3b82f6 !important; // Blue 500 for highlight
+        background: rgba(59, 130, 246, 0.07) !important;
+        border-left-color: #3b82f6 !important;
 
         [saved-theme="dark"] & {
-          background: #1e293b !important; // Slate 800
+          background: rgba(56, 139, 253, 0.1) !important;
+          border-left-color: #388bfd !important;
         }
       }
-      
+
+      // Line number gutter
       &::before {
         content: counter(line);
         counter-increment: line;
-        width: 2.75rem !important;
+        width: 3rem !important;
         padding-right: 0.75rem !important;
         text-align: right !important;
-        color: #94a3b8 !important; // Slate 400
-        font-size: 0.8em !important;
+        color: #9ca3b0 !important;
+        font-size: 0.78em !important;
         user-select: none !important;
-        
-        // Absolute Positioning for wrapped layout alignment
         position: absolute !important;
         left: 0 !important;
         top: 0 !important;
         bottom: 0 !important;
         z-index: 2 !important;
-        background: #f8fafc !important; // Match pre background
-        border-right: 1px solid #e2e8f0 !important;
+        background: #f8fafc !important;
+        border-right: 1px solid #e5e9f0 !important;
         display: flex !important;
         align-items: flex-start !important;
         justify-content: flex-end !important;
         box-sizing: border-box !important;
+        line-height: inherit !important;
+        padding-top: 0 !important;
 
         [saved-theme="dark"] & {
-          background: #0f172a !important; // Slate 900
-          border-right-color: #334155 !important; // Slate 700
-          color: #64748b !important; // Slate 500
+          background: #0d1117 !important;
+          border-right-color: #21262d !important;
+          color: #484f58 !important;
         }
       }
 
       &[data-highlighted-line]::before {
-        background: #f1f5f9 !important; // Slate 100
+        background: rgba(59, 130, 246, 0.07) !important;
+        color: #3b82f6 !important;
 
         [saved-theme="dark"] & {
-          background: #1e293b !important; // Slate 800
+          background: rgba(56, 139, 253, 0.1) !important;
+          color: #388bfd !important;
         }
       }
     }
@@ -824,29 +853,82 @@ pre {
     padding-top: 4.5rem !important;
     
     .sidebar.right {
-      display: none !important; // Hide right sidebar on mobile completely
+      display: none !important;
     }
   }
 
   // Clear responsive margins/padding for content container
   .center {
-    padding: 0 0.5rem !important;
+    padding: 0 !important;
     margin: 0 !important;
+    // Prevent ANY horizontal overflow from code blocks
+    overflow-x: hidden !important;
+    width: 100% !important;
   }
-  
+
   article {
-    padding: 0 0.5rem !important;
+    padding: 0 1rem !important;
     margin: 0 !important;
+    overflow-x: hidden !important;
+    font-size: 0.975rem !important;
+
+    h1 { font-size: 1.75rem !important; }
+    h2 { font-size: 1.35rem !important; }
+    h3 { font-size: 1.1rem !important; }
+
+    p {
+      font-size: 1rem !important;
+      line-height: 1.8 !important;
+    }
+  }
+
+  // Mobile code blocks — horizontal scroll container
+  figure[data-rehype-pretty-code-figure] {
+    margin: 1.25rem -1rem !important; // bleed to screen edges
+    border-radius: 0 !important;
+    border-left: none !important;
+    border-right: none !important;
+  }
+
+  pre {
+    // Wrap tokens on mobile too — consistent with desktop
+    white-space: pre-wrap !important;
+    word-wrap: break-word !important;
+    font-size: 0.8rem !important;
+
+    code {
+      font-size: 0.8rem !important;
+
+      & > [data-line] {
+        padding-left: calc(2.25rem + 0.75rem) !important;
+        padding-right: 1rem !important;
+
+        &::before {
+          width: 2.25rem !important;
+          font-size: 0.72em !important;
+          padding-right: 0.5rem !important;
+        }
+      }
+    }
+  }
+
+  // Standalone pre blocks (no figure) also scroll cleanly
+  article > pre {
+    margin: 1.25rem -1rem !important;
+    border-radius: 0 !important;
+    border-left: none !important;
+    border-right: none !important;
+    padding: 0.875rem 0 !important;
   }
 
   .page-title {
     margin: 0 !important;
-    font-size: 1.1rem !important;
+    font-size: 1.05rem !important;
     font-weight: 700 !important;
     white-space: nowrap !important;
     overflow: hidden !important;
     text-overflow: ellipsis !important;
-    max-width: 42vw !important;
+    max-width: 40vw !important;
     
     a {
       color: var(--dark) !important;
@@ -870,9 +952,7 @@ pre {
     border-radius: 50% !important;
     flex-shrink: 0 !important;
     
-    p {
-      display: none !important;
-    }
+    p { display: none !important; }
     
     svg {
       margin: 0 !important;
@@ -887,11 +967,12 @@ pre {
     flex-shrink: 0 !important;
   }
 
-  // Mobilize Hamburger button layout
+  // Hamburger button
   .explorer-toggle.mobile-explorer {
-    display: flex !important;
+    display: inline-flex !important;
     align-items: center !important;
     justify-content: center !important;
+    vertical-align: middle !important;
     width: 2.2rem !important;
     height: 2.2rem !important;
     border-radius: 50% !important;
@@ -899,11 +980,15 @@ pre {
     border: 1px solid var(--lightgray) !important;
     padding: 0 !important;
     flex-shrink: 0 !important;
-    
+    line-height: 1 !important;
+    box-sizing: border-box !important;
+
     svg {
+      display: block !important;
       width: 16px !important;
       height: 16px !important;
       stroke: var(--darkgray) !important;
+      flex-shrink: 0 !important;
     }
   }
 
@@ -912,7 +997,6 @@ pre {
     order: -1 !important;
     margin: 0 !important;
 
-    // Visual dark overlay when drawer is open
     &:not(.collapsed)::before {
       content: "";
       position: fixed;
@@ -956,20 +1040,22 @@ pre {
 [saved-theme="dark"] {
   // Inline Code Badge
   code {
-    background: rgba(148, 163, 184, 0.1) !important;
-    border-color: rgba(148, 163, 184, 0.2) !important;
-    color: #e2e8f0 !important;
+    background: #1a2235 !important;
+    border-color: #2d3f5e !important;
+    color: #93c5fd !important; // blue-300
   }
 
-  // Dark Mode Code Block Refinements
+  // Dark Mode Code Block Refinements (GitHub Dark style)
   figure[data-rehype-pretty-code-figure] {
     background: #0d1117 !important;
-    border-color: #30363d !important;
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5) !important;
+    border-color: #21262d !important;
+    box-shadow:
+      0 1px 3px rgba(0, 0, 0, 0.3),
+      0 8px 24px rgba(0, 0, 0, 0.4) !important;
 
     & > [data-rehype-pretty-code-title] {
       background: #161b22 !important;
-      border-bottom-color: #30363d !important;
+      border-bottom-color: #21262d !important;
       color: #8b949e !important;
     }
   }
@@ -979,18 +1065,19 @@ pre {
     
     code > [data-line] {
       &[data-highlighted-line] {
-        background: #161b22 !important;
-        border-left-color: #3b82f6 !important;
+        background: rgba(56, 139, 253, 0.1) !important;
+        border-left-color: #388bfd !important;
       }
       
       &::before {
         background: #0d1117 !important;
-        border-right-color: #30363d !important;
-        color: #6e7681 !important;
+        border-right-color: #21262d !important;
+        color: #484f58 !important;
       }
       
       &[data-highlighted-line]::before {
-        background: #161b22 !important;
+        background: rgba(56, 139, 253, 0.1) !important;
+        color: #388bfd !important;
       }
     }
   }
